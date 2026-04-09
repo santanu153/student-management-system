@@ -1,65 +1,119 @@
-import Image from "next/image";
+'use client';
+
+import Link from 'next/link';
+import { FileEdit, CheckCircle, Palette, Sparkles, ArrowRight, Zap, Shield, Target } from 'lucide-react';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="max-w-6xl mx-auto space-y-16 py-8">
+      {/* Hero */}
+      <section className="text-center space-y-6 animate-fadeIn">
+        <div className="tag mx-auto">✨ AI-Powered Resume Scanner</div>
+        <h1 className="text-4xl lg:text-6xl font-extrabold leading-tight">
+          Land Your Dream Job with{' '}
+          <span className="gradient-text">ATS-Optimized</span> Resumes
+        </h1>
+        <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+          Build, analyze, and optimize your resume to beat Applicant Tracking Systems.
+          Get AI-powered suggestions and increase your interview callback rate by 3x.
+        </p>
+        <div className="flex flex-wrap gap-4 justify-center">
+          <Link href="/builder" className="btn btn-primary text-base px-8 py-3">
+            <FileEdit size={18} /> Build Resume <ArrowRight size={16} />
+          </Link>
+          <Link href="/checker" className="btn btn-secondary text-base px-8 py-3">
+            <CheckCircle size={18} /> Check ATS Score
+          </Link>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </section>
+
+      {/* Stats */}
+      <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { value: '99%', label: 'ATS Compatibility', color: '#10B981' },
+          { value: '3x', label: 'More Interviews', color: '#6366F1' },
+          { value: '50K+', label: 'Resumes Scanned', color: '#F59E0B' },
+          { value: '8', label: 'Templates', color: '#EC4899' },
+        ].map((stat, i) => (
+          <div
+            key={i}
+            className="glass rounded-2xl p-6 text-center hover-card"
+            style={{ animationDelay: `${i * 100}ms` }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="text-3xl font-extrabold mb-1" style={{ color: stat.color }}>{stat.value}</div>
+            <div className="text-sm" style={{ color: 'var(--text-secondary)' }}>{stat.label}</div>
+          </div>
+        ))}
+      </section>
+
+      {/* Features Grid */}
+      <section className="space-y-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold mb-3">Everything You Need</h2>
+          <p style={{ color: 'var(--text-secondary)' }}>Complete toolkit to create the perfect resume</p>
         </div>
-      </main>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { icon: FileEdit, title: 'Resume Builder', desc: 'Step-by-step builder with live preview and drag-and-drop sections', href: '/builder', color: '#6366F1' },
+            { icon: CheckCircle, title: 'ATS Checker', desc: 'Upload your resume and get instant ATS compatibility score', href: '/checker', color: '#10B981' },
+            { icon: Sparkles, title: 'AI Suggestions', desc: 'Get AI-powered improvements for bullet points, summaries, and skills', href: '/builder', color: '#8B5CF6' },
+            { icon: Palette, title: 'Templates', desc: 'Choose from 8 professional templates across 4 categories', href: '/templates', color: '#EC4899' },
+            { icon: Target, title: 'Keyword Matching', desc: 'Match your resume keywords against any job description', href: '/checker', color: '#F59E0B' },
+            { icon: Shield, title: 'Privacy First', desc: 'Your data stays local. No resumes stored on external servers', href: '#', color: '#14B8A6' },
+          ].map((feature, i) => {
+            const Icon = feature.icon;
+            return (
+              <Link
+                key={i}
+                href={feature.href}
+                className="glass rounded-2xl p-6 hover-card block"
+              >
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
+                  style={{ background: `${feature.color}15`, border: `1px solid ${feature.color}30` }}
+                >
+                  <Icon size={22} style={{ color: feature.color }} />
+                </div>
+                <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>{feature.desc}</p>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="space-y-8">
+        <div className="text-center">
+          <h2 className="text-3xl font-bold mb-3">How It Works</h2>
+          <p style={{ color: 'var(--text-secondary)' }}>Three simple steps to a perfect resume</p>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { step: '01', title: 'Build or Upload', desc: 'Use our builder or upload your existing resume in PDF/DOCX format', icon: '📄' },
+            { step: '02', title: 'Get ATS Score', desc: 'Our AI analyzes your resume against ATS criteria and job descriptions', icon: '🎯' },
+            { step: '03', title: 'Optimize & Apply', desc: 'Apply AI suggestions, download your optimized resume, and land interviews', icon: '🚀' },
+          ].map((item, i) => (
+            <div key={i} className="text-center space-y-4">
+              <div className="text-5xl">{item.icon}</div>
+              <div className="tag mx-auto">Step {item.step}</div>
+              <h3 className="font-bold text-xl">{item.title}</h3>
+              <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="glass rounded-3xl p-12 text-center space-y-6 animate-pulse-glow">
+        <h2 className="text-3xl font-bold">Ready to Beat the ATS?</h2>
+        <p className="max-w-xl mx-auto" style={{ color: 'var(--text-secondary)' }}>
+          Join thousands of job seekers who have improved their resume scores and landed more interviews.
+        </p>
+        <Link href="/builder" className="btn btn-primary text-base px-10 py-4">
+          <Zap size={18} /> Start Building for Free <ArrowRight size={16} />
+        </Link>
+      </section>
     </div>
   );
 }
