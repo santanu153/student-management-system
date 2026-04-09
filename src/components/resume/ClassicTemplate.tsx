@@ -104,7 +104,7 @@ export default function ClassicTemplate({ data, color = '#2b6cb0', templateId = 
                         <div key={index}>
                           <h3 className="font-bold text-gray-800 text-sm leading-tight mb-1">{edu.degree || 'Degree Name'}</h3>
                           <div className="text-xs text-gray-700 font-medium">{edu.school || 'School/University Name'}</div>
-                          <span className="text-xs text-gray-500 mt-1 block">{edu.startDate} - {edu.endDate || 'Expected'}</span>
+                          <span className="text-xs text-gray-500 mt-1 block">{edu.graduationDate || 'Expected'}</span>
                         </div>
                       ))}
                     </div>
@@ -211,7 +211,7 @@ export default function ClassicTemplate({ data, color = '#2b6cb0', templateId = 
                   <div key={index}>
                     <div className="flex justify-between items-baseline mb-1">
                       <h3 className="font-bold text-gray-800">{edu.degree || 'Degree Name'}</h3>
-                      <span className="text-sm font-medium text-gray-600">{edu.startDate} - {edu.endDate || 'Expected'}</span>
+                      <span className="text-sm font-medium text-gray-600">{edu.graduationDate || 'Expected'}</span>
                     </div>
                     <div className="flex justify-between items-baseline">
                       <span className="text-gray-700">{edu.school || 'School/University Name'}</span>
